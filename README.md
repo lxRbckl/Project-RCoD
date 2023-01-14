@@ -1,2 +1,2 @@
 ## [`Project RCoD`](http://lxrbckl.com/Project-RCoD)
-> Return randomly dropped calls on Discord. Spring 2023.
+> Return randomly dropped Discord calls on Retina displays. Spring 2023.
