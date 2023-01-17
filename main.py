@@ -20,13 +20,13 @@ RCoD = commands.Bot(command_prefix = '', intents = Intents.all())
 gSettingLink = 'https://raw.githubusercontent.com/lxRbckl/Project-RCoD/main/setting.json'
 gTime = [
 
-    '1 AM',
-    '2 AM',
-    '3 AM',
-    '4 AM',
-    '5 AM',
-    '6 AM',
-    '7 AM'
+    '01 AM',
+    '02 AM',
+    '03 AM',
+    '04 AM',
+    '05 AM',
+    '06 AM',
+    '07 AM'
 
 ]
 
@@ -41,7 +41,7 @@ async def commandFunction(ctx):
     gInput = ctx.invoked_with.lower()
 
 
-@tasks.loop(seconds = 10)
+@tasks.loop(minutes = 1)
 async def loopFunction():
     '''  '''
 
@@ -53,12 +53,12 @@ async def loopFunction():
 
             # find facetime <
             # click facetime <
-            pos = locateCenterOnScreen('asset/facetime.png', confidence = 0.8)
+            pos = locateCenterOnScreen('asset/facetime.jpeg', confidence = 0.9, grayscale = True)
             click(x = (pos[0] / 2), y = (pos[1] / 2))
 
             await RCoD.get_channel(gChannel).send(':man_mage: FaceTime Recovered')
 
-        # >
+            # >
 
     except TypeError: pass
 
