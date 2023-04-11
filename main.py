@@ -2,6 +2,7 @@
 
 
 # import <
+from os import popen
 from discord import Intents
 from datetime import datetime
 from lxRbckl import requestsGet
@@ -13,7 +14,7 @@ from pyautogui import click, locateCenterOnScreen
 
 # global <
 discordToken = ''
-
+ 
 gInput = 'on'
 gChannel = 1062210162129129492
 RCoD = commands.Bot(command_prefix = '', intents = Intents.all())
@@ -49,7 +50,14 @@ async def loopFunction():
     # except then (facetime online) <
     try:
 
-        if ((datetime.now().strftime('%I %p') in gTime) and (gInput != 'off')):
+        # if (off) <
+        # elif (on) <
+        if (gInput == 'off'):
+
+            popen('pmset displaysleepnow')
+            exit()
+
+        elif ((datetime.now().strftime('%I %p') in gTime) and (gInput != 'off')):
 
             # find facetime <
             # click facetime <
@@ -59,6 +67,8 @@ async def loopFunction():
             await RCoD.get_channel(gChannel).send(':man_mage: FaceTime Recovered')
 
             # >
+
+        # >
 
     except TypeError: pass
 
