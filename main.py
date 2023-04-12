@@ -12,6 +12,7 @@ from pyautogui import click, locateCenterOnScreen
 # >
 
 
+# token <
 # global <
 discordToken = ''
  
