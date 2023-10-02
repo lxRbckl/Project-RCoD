@@ -3,6 +3,7 @@
 
 # import <
 from os import popen
+from asyncio import sleep
 from discord import Intents
 from datetime import datetime
 from lxRbckl import requestsGet
@@ -16,10 +17,17 @@ from pyautogui import click, locateCenterOnScreen
 # global <
 discordToken = ''
  
+gIndex = 0
 gInput = 'on'
 gChannel = 1062210162129129492
 RCoD = commands.Bot(command_prefix = '', intents = Intents.all())
 gSettingLink = 'https://raw.githubusercontent.com/lxRbckl/Project-RCoD/main/setting.json'
+gCameras = [
+    
+    'usb.png',
+    'facetime.png'
+    
+]
 gTime = [
 
     '01 AM',
@@ -41,6 +49,26 @@ async def commandFunction(ctx):
 
     global gInput
     gInput = ctx.invoked_with.lower()
+
+
+@RCoD.command(aliases = requestsGet(pLink = gSettingLink)['aliases'])
+async def commandFunction(ctx):
+    '''  '''
+    
+    global gIndex
+    
+    gIndex += 1
+    pos = locateCenterOnScreen('asset/more.png', confidence = 0.9, grayscale = True)
+    click(x = (pos[0] / 2), y = (pos[1] / 2))
+    
+    pos = locateCenterOnScreen(
+        
+        image = f'asset/{gCameras[(gIndex % len(gCameras))]}', 
+        confidence = 0.9, 
+        grayscale = True
+    
+    )
+    click(x = (pos[0] / 2), y = (pos[1] / 2))
 
 
 @tasks.loop(minutes = 1)
@@ -74,6 +102,9 @@ async def loopFunction():
     except TypeError: pass
 
     # >
+
+
+
 
 
 @RCoD.event
