@@ -8,7 +8,7 @@ from discord import Intents
 from datetime import datetime
 from lxRbckl import requestsGet
 from discord.ext import commands, tasks
-from pyautogui import click, locateCenterOnScreen
+from pyautogui import (size, click, locateCenterOnScreen, moveTo)
 
 # >
 
@@ -25,7 +25,7 @@ gSettingLink = 'https://raw.githubusercontent.com/lxRbckl/Project-RCoD/main/sett
 gCameras = [
     
     'usb.png',
-    'facetime.png'
+    'computer.png'
     
 ]
 gTime = [
@@ -43,32 +43,40 @@ gTime = [
 # >
 
 
-@RCoD.command(aliases = requestsGet(pLink = gSettingLink)['aliases'])
-async def commandFunction(ctx):
-    '''  '''
+# @RCoD.command(aliases = requestsGet(pLink = gSettingLink)['aliases'])
+# async def commandFunction(ctx):
+#     '''  '''
 
-    global gInput
-    gInput = ctx.invoked_with.lower()
+#     global gInput
+#     gInput = ctx.invoked_with.lower()
 
 
-@RCoD.command(aliases = requestsGet(pLink = gSettingLink)['aliases'])
-async def commandFunction(ctx):
+@RCoD.command(aliases = requestsGet(pLink = gSettingLink)['switch'])
+async def switchFunction(ctx):
     '''  '''
     
     global gIndex
-    
     gIndex += 1
+    print('0')
+    x1, y1 = size()
+    moveTo(x = (x1 / 2), y = (y1 / 2))
+    print('1')
     pos = locateCenterOnScreen('asset/more.png', confidence = 0.9, grayscale = True)
     click(x = (pos[0] / 2), y = (pos[1] / 2))
-    
+    print('2')
     pos = locateCenterOnScreen(
         
         image = f'asset/{gCameras[(gIndex % len(gCameras))]}', 
-        confidence = 0.9, 
+        confidence = 0.8, 
         grayscale = True
     
     )
     click(x = (pos[0] / 2), y = (pos[1] / 2))
+    print('3')
+    sleep(1) # remove
+    moveTo(x = (x1 / 2), y = ((y1 / 2) - 250))
+    click(x = (x1 / 2), y = ((y1 / 2) - 250))
+    print('4')
 
 
 @tasks.loop(minutes = 1)
@@ -108,7 +116,10 @@ async def loopFunction():
 
 
 @RCoD.event
-async def on_ready(): loopFunction.start()
+async def on_ready(): 
+    
+    print()
+    loopFunction.start()
 
 
 # main <
