@@ -50,6 +50,20 @@ gTime = [
 #     global gInput
 #     gInput = ctx.invoked_with.lower()
 
+isMute = True
+def fMute():
+    '''  '''
+    
+    try:
+    
+        x1, y1 = size()
+        moveTo(x = (x1 / 2), y = (y1 / 2))
+        pos = locateCenterOnScreen('asset/mic.png', confidence = 0.9, grayscale = True)
+        
+        click(x = (pos[0] / 2), y = (pos[1] / 2))
+    
+    except: pass
+
 
 @RCoD.command(aliases = requestsGet(pLink = gSettingLink)['switch'])
 async def switchFunction(ctx):
@@ -73,9 +87,9 @@ async def switchFunction(ctx):
     )
     click(x = (pos[0] / 2), y = (pos[1] / 2))
     print('3')
-    sleep(1) # remove
-    moveTo(x = (x1 / 2), y = ((y1 / 2) - 250))
-    click(x = (x1 / 2), y = ((y1 / 2) - 250))
+    await sleep(1) # remove
+    moveTo(x = (x1 / 2), y = ((y1 / 2) + 250))
+    click(x = (x1 / 2), y = ((y1 / 2) + 250))
     print('4')
 
 
@@ -86,6 +100,8 @@ async def loopFunction():
     # try if (facetime online) <
     # except then (facetime online) <
     try:
+        
+        if (isMute): fMute()
 
         # if (off) <
         # elif (on) <
