@@ -2,7 +2,7 @@
 
 
 # import <
-from source.bot import jabot
+
 
 # >
 
@@ -16,11 +16,6 @@ token = ''
 # main <
 if (__name__ == '__main__'):
    
-   jabot(
-      
-      role = 'call',
-      token = token
-      
-   )
+   pass
 
 # >
