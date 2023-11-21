@@ -13,20 +13,59 @@ from pyautogui import (
 
 class screen:
    
-   
-   def __init__():
+   def __init__(
+      
+      self,
+      isRetinaDisplay = True
+      
+   ):
       '''  '''
       
-      
+      self.isRetinaDisplay = isRetinaDisplay
    
    
-   def screenshot():
+   def move(self):
       '''  '''
       
-      pass
+      fDisplay = lambda i : i / 2 if (self.isRetinaDisplay) else i
+      x, y = map(fDisplay, size())
+      
+      moveTo(x, y)
    
    
-   def click():
+   def click(
+      
+      self,
+      x,
+      y,
+      times = 1
+      
+   ):
       '''  '''
       
-      pass
+      for i in range(times): click(x, y)
+
+   
+   def locate(
+      
+      self,
+      image,
+      grayscale,
+      confidence
+      
+   ):
+      '''  '''
+      
+      return locateCenterOnScreen(
+         
+         image = image,
+         grayscale = grayscale,
+         confidence = confidence
+         
+      )
+   
+
+
+# remove
+x = screen()
+print(x.move())
