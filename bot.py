@@ -38,6 +38,7 @@ class cBot(Bot):
    async def on_ready(self):
       '''  '''
       
+      self.register()
       await self.listen()
    
    
@@ -76,8 +77,8 @@ class cBot(Bot):
    
    
    async def listen(self):
-      '''  '''      
-      
+      '''  '''
+            
       while (True):
          
          print('here')
@@ -90,7 +91,7 @@ class cBot(Bot):
       @Bot.hybrid_command(
          
          self, 
-         name = 'Switch',
+         name = 'switch',
          description = 'Transition to a different camera.'
       
       )
@@ -129,7 +130,7 @@ class cBot(Bot):
       @Bot.hybrid_command(
          
          self,
-         name = 'Off',
+         name = 'off',
          description = 'Turns of RCoD Bot'
          
       )
