@@ -19,16 +19,16 @@ class cBot:
    def __init__(
       
       self,
-      role,
-      token,
-      channel = 1062210162129129492
+      pRole,
+      pToken,
+      pChannel = 1062210162129129492
       
    ):
       '''  '''
       
-      self.role = role
-      self.token = token
-      self.channel = channel
+      self.role = pRole
+      self.token = pToken
+      self.channel = pChannel
       
       self.bot = Bot(
          
@@ -57,6 +57,12 @@ class cBot:
    
    
    def listen(self):
+      '''  '''
+      
+      pass
+
+   
+   def register(self):
       '''  '''
       
       pass

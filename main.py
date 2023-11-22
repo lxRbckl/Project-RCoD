@@ -2,14 +2,14 @@
 
 
 # import <
-
+from bot import cBot
 
 # >
 
 
 # variables <
-role = ''
-token = ''
+gRole = 'caller'
+gToken = ''
 
 # >
 
@@ -17,6 +17,12 @@ token = ''
 # main <
 if (__name__ == '__main__'):
    
-   pass
+   bot = cBot(
+      
+      role = gRole,
+      token = gToken
+      
+   )
+   bot.run()
 
 # >
