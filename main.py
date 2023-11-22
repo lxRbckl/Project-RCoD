@@ -8,6 +8,7 @@
 
 
 # variables <
+role = ''
 token = ''
 
 # >
