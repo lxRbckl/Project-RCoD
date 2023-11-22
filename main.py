@@ -16,13 +16,14 @@ gToken = ''
 
 # main <
 if (__name__ == '__main__'):
-   
+
    bot = cBot(
       
-      role = gRole,
-      token = gToken
+      pRole = gRole,
+      pToken = gToken
       
    )
-   bot.run()
-
+   
+   bot.run(gToken)
+   
 # >

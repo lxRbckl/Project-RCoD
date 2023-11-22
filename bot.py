@@ -1,20 +1,15 @@
 # import <
 from os import popen
 from asyncio import sleep
+from discord import Intents
 from datetime import datetime
-from discord.ext import tasks
+from lxrbckl.screen import screen
 from discord.ext.commands import Bot
-from discord import (
-   
-   Intents,
-   app_commands
-   
-)
 
 # >
 
 
-class cBot:
+class cBot(Bot):
    
    def __init__(
       
@@ -27,42 +22,119 @@ class cBot:
       '''  '''
       
       self.role = pRole
-      self.token = pToken
+      self.token = pToken      
+      self.screen = screen()
       self.channel = pChannel
       
-      self.bot = Bot(
+      Bot.__init__(
          
+         self,
          command_prefix = '',
          intents = Intents.all()
          
       )
+
       
-   
-   def run(self):
+   async def on_ready(self):
       '''  '''
       
-      self.bot.run(self.token)
-      
+      await self.listen()
+   
    
    def call(self):
-      ''' '''
+      '''  '''
       
-      pass
-   
+      # find call <
+      # click call <
+      x, y = self.screen.find(
+         
+         grayscale = True,
+         confidence = 0.95,
+         image = 'asset/facetime/call.png'
+         
+      )
+      self.screen.click(x = x, y = y)
+      
+      # >
+         
    
    def answer(self):
       '''  '''
       
-      pass
-   
-   
-   def listen(self):
-      '''  '''
+      # find answer <
+      # click answer <
+      x, y = self.screen.find(
+         
+         grayscale = True,
+         confidence = 0.95,
+         image = 'asset/facetime/answer.png'
+         
+      )
+      self.screen.click(x = x, y = y)
       
-      pass
-
+      # >
+   
+   
+   async def listen(self):
+      '''  '''      
+      
+      while (True):
+         
+         print('here')
+         await sleep(30)
+         
    
    def register(self):
       '''  '''
       
-      pass
+      @Bot.hybrid_command(
+         
+         self, 
+         name = 'Switch',
+         description = 'Transition to a different camera.'
+      
+      )
+      async def switch(ctx):
+         '''  '''
+         
+         # open <
+         # find more <
+         # click more <
+         self.screen.move(x = 500, y = 500)
+         x, y = self.screen.find(
+            
+            grayscale = True,
+            confidence = 0.95,
+            image = 'asset/camera/more.png'
+            
+         )
+         self.screen.click(x = x, y = y)
+         
+         # >
+         
+         # find available <
+         # click available <
+         x, y = self.screen.find(
+            
+            grayscale = True,
+            confidence = 0.95,
+            image = 'asset/camera/available.png'
+            
+         )
+         self.screen.click(x = x, y = y)
+         
+         # >
+      
+      
+      @Bot.hybrid_command(
+         
+         self,
+         name = 'Off',
+         description = 'Turns of RCoD Bot'
+         
+      )
+      async def off(ctx):
+         ''' '''
+         
+         popen('pmset displaysleepnow')
+         exit()
