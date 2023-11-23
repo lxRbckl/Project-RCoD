@@ -46,7 +46,7 @@ class cBot(Bot):
       self.register()
       await self.tree.sync()
       
-      await self.listen()
+      await self.listen.start()
       
       # >
    
@@ -77,6 +77,7 @@ class cBot(Bot):
    async def listen(self):
       '''  '''
          
+      print('here')
       self.mute()
       await {
          
