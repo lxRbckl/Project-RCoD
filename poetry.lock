@@ -294,14 +294,14 @@ files = [
 
 [[package]]
 name = "lxrbckl"
-version = "2.1.6"
+version = "2.2.6"
 description = "CRUD tools for local and remote files, enhancing readability and abstraction in lxRbckl projects."
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "lxrbckl-2.1.6-py3-none-any.whl", hash = "sha256:6b2be63dd7eb32fd19f03439d8b1af61f7af291326dec04c47bad43309b6095d"},
-    {file = "lxrbckl-2.1.6.tar.gz", hash = "sha256:7584985b05fc6c3ee9fe39721cdf81c68c3d7132407d54a7e9d5944e226a2789"},
+    {file = "lxrbckl-2.2.6-py3-none-any.whl", hash = "sha256:6562a4f92ae2f21e84e4ebeeb447b2534e96ff699b20ded3e3684fd026eefc9e"},
+    {file = "lxrbckl-2.2.6.tar.gz", hash = "sha256:c93df6c985fe5fa52ded70197930a781b52fe16c323f3b23d173b5b5369149ae"},
 ]
 
 [package.dependencies]
@@ -880,4 +880,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "2a3a85caabda6837e8eddb7d2bdaf3232519b52562037d7e80fad3911722d1ff"
+content-hash = "1527d5ee06ccd1dc7bd3e4f20a527d0a2062d78a2110903f09842e5aa2ae326d"

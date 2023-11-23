@@ -2,7 +2,7 @@
 from os import popen
 from asyncio import sleep
 from discord import Intents
-from datetime import datetime
+from discord.ext import tasks
 from lxrbckl.screen import screen
 from discord.ext.commands import Bot
 
@@ -16,15 +16,25 @@ class cBot(Bot):
       self,
       pRole,
       pToken,
-      pChannel = 1062210162129129492
+
+      pInterval = 5,
+      pChannel = 1062210162129129492,
+      pDuration = {
+         
+         'call' : 20,
+         'answer' : 3
+         
+      }
       
    ):
       '''  '''
       
       self.role = pRole
-      self.token = pToken      
+      self.token = pToken
       self.screen = screen()
       self.channel = pChannel
+      self.duration = pDuration
+      self.interval = pInterval
       
       Bot.__init__(
          
@@ -33,20 +43,29 @@ class cBot(Bot):
          intents = Intents.all()
          
       )
-
+      
       
    async def on_ready(self):
       '''  '''
       
+      # add commands <
+      # run algorithm <
       self.register()
+      synced = await self.tree.sync()
+      
       await self.listen()
+      
+      # >
    
    
-   def call(self):
+   async def call(self):
       '''  '''
+      
+      print('call') # remove
       
       # find call <
       # click call <
+      # wait to end <
       x, y = self.screen.find(
          
          grayscale = True,
@@ -57,10 +76,12 @@ class cBot(Bot):
       self.screen.click(x = x, y = y)
       
       # >
-         
+               
    
-   def answer(self):
+   async def answer(self):
       '''  '''
+      
+      print('answer') # remove
       
       # find answer <
       # click answer <
@@ -76,21 +97,28 @@ class cBot(Bot):
       # >
    
    
+   @tasks.loop(seconds = 30)
    async def listen(self):
       '''  '''
+         
+      try:
+
+         await {
             
-      while (True):
-         
-         print('here')
-         await sleep(30)
-         
+            'call' : self.call,
+            'answer' : self.answer
+            
+         }[self.role]()
+         await sleep(self.duration[self.role])
+                     
+      except ValueError: pass
+                        
    
    def register(self):
       '''  '''
       
-      @Bot.hybrid_command(
-         
-         self, 
+      @self.hybrid_command(
+      
          name = 'switch',
          description = 'Transition to a different camera.'
       
@@ -127,12 +155,11 @@ class cBot(Bot):
          # >
       
       
-      @Bot.hybrid_command(
+      @self.hybrid_command(
          
-         self,
          name = 'off',
-         description = 'Turns of RCoD Bot'
-         
+         description = 'Turns off RCoD Bot'
+      
       )
       async def off(ctx):
          ''' '''

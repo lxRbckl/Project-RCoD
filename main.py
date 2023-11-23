@@ -8,7 +8,7 @@ from bot import cBot
 
 
 # variables <
-gRole = 'caller'
+gRole = 'call'
 gToken = ''
 
 # >
@@ -23,7 +23,7 @@ if (__name__ == '__main__'):
       pToken = gToken
       
    )
-   
+
    bot.run(gToken)
    
 # >
