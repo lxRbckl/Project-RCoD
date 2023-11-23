@@ -44,7 +44,7 @@ class cBot(Bot):
       # add commands <
       # run algorithm <
       self.register()
-      # synced = await self.tree.sync()
+      await self.tree.sync()
       
       await self.listen()
       
