@@ -9,6 +9,7 @@ packages = [{include = "project_rcod"}]
 [tool.poetry.dependencies]
 python = "^3.8"
 lxrbckl = "^2.3.0"
+discord = "^2.3.2"
 
 
 [build-system]
