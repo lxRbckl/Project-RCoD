@@ -10,6 +10,7 @@ packages = [{include = "project_rcod"}]
 python = "^3.8"
 lxrbckl = "^2.3.0"
 discord = "^2.3.2"
+opencv-python = "^4.8.1.78"
 
 
 [build-system]
