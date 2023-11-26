@@ -5,6 +5,7 @@ from discord import Intents
 from discord.ext import tasks
 from lxrbckl.screen import screen
 from discord.ext.commands import Bot
+from discord.ext.commands.errors import CommandRegistrationError
 
 # >
 
@@ -26,8 +27,7 @@ class cBot(Bot):
       self.token = pToken
       self.screen = screen()
       self.channel = pChannel
-      self.mute = lambda : popen('osascript -e "set volume output volume 0"')
-      self.unmute = lambda : popen('osascript -e "set volume output volume 100"')
+      self.volume = lambda i : popen('osascript -e "set volume output volume {i}"')
       
       Bot.__init__(
          
@@ -49,6 +49,17 @@ class cBot(Bot):
       await self.listen.start()
       
       # >
+      
+   
+   def mute(self):
+      '''  '''
+      
+      self.screen.click(self.screen.find(
+         
+         confidence = 0.95,
+         image = 'asset/mic/unmuted.png'
+         
+      ))
    
    
    async def call(self):
@@ -60,6 +71,7 @@ class cBot(Bot):
          image = 'asset/facetime/call.png'
          
       ))
+      self.mute()
                
    
    async def answer(self):
@@ -76,59 +88,60 @@ class cBot(Bot):
    @tasks.loop(seconds = 30)
    async def listen(self):
       '''  '''
-         
-      print('here')
-      self.mute()
+      
       await {
          
          'call' : self.call,
          'answer' : self.answer
          
       }[self.role]()
-      self.unmute()
                                              
    
    def register(self):
       '''  '''
       
-      @self.hybrid_command(
+      try:
       
-         name = 'switch',
-         description = 'Transition to a different camera.'
-      
-      )
-      async def switch(ctx):
-         '''  '''
+         @self.hybrid_command(
          
-         # open <
-         # click more <
-         # click available <
-         self.screen.move(xy = [500, 500])
-         self.screen.click(self.screen.find(
-            
-            confidence = 0.95,
-            image = 'asset/camera/more.png'
-            
-         ))
-         self.screen.click(self.screen.find(
-            
-            confidence = 0.95,
-            image = 'asset/camera/available.png'
-            
-         ))
-         self.screen.click(xy = [500, 1000])
+            name = 'switch',
+            description = 'Transition to a different camera.'
          
-         # >
-      
-      
-      @self.hybrid_command(
+         )
+         async def switch(ctx):
+            '''  '''
+            
+            # open <
+            # click more <
+            # click available <
+            self.screen.move(xy = [500, 500])
+            self.screen.click(self.screen.find(
+               
+               confidence = 0.95,
+               image = 'asset/camera/more.png'
+               
+            ))
+            self.screen.click(self.screen.find(
+               
+               confidence = 0.95,
+               image = 'asset/camera/available.png'
+               
+            ))
+            self.screen.click(xy = [500, 1000])
+            
+            # >
          
-         name = 'off',
-         description = 'Turns off RCoD Bot'
-      
-      )
-      async def off(ctx):
-         ''' '''
          
-         popen('pmset displaysleepnow')
-         exit()
+         @self.hybrid_command(
+            
+            name = 'off',
+            description = 'Turns off RCoD Bot'
+         
+         )
+         async def off(ctx):
+            ''' '''
+            
+            popen('pmset displaysleepnow')
+            exit()
+         
+      except CommandRegistrationError: pass
