@@ -4,5 +4,5 @@
 cd ~/Project-RCoD
 
 
-poetry install
-poetry run python3 main.py
+/Library/Frameworks/Python.framework/Versions/3.8/bin/poetry install
+/Library/Frameworks/Python.framework/Versions/3.8/bin/poetry run python3 main.py
