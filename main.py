@@ -2,7 +2,7 @@
 
 
 # import <
-from bot import Bot
+from source.bot import Bot
 
 # >
 
@@ -10,7 +10,8 @@ from bot import Bot
 # variables <
 gRole = 'call'
 gContact = 'NoahsBroWitch'
-gToken = 'test'
+gTokenOpenai = ''
+gTokenDiscord = ''
 
 # >
 
@@ -21,13 +22,13 @@ if (__name__ == '__main__'):
    bot = Bot(
       
       pRole = gRole,
-      pContact = gContact
+      pContact = gContact,
+      pTokenOpenai = gTokenOpenai
       
-   ).run(gToken)
-
-   # bot.run(gToken)
+   )
+   
+   bot.run(gTokenDiscord)
    
    # python3 -c "from bot import Bot; Bot(pRole = 'call', pContact = '12').run('token');"
-   # python3 -c 
    
 # >
