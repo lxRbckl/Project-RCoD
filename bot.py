@@ -1,37 +1,52 @@
 # import <
 from os import popen
-from asyncio import sleep
-from discord import Intents
-from discord.ext import tasks
+from discord.ext.commands import errors
+from discord.ext.commands.context import Context
 from lxrbckl.screen import screen
-from discord.ext.commands import Bot
 from discord.ext.commands.errors import CommandRegistrationError
+from discord import (
+   
+   Object,
+   Intents,
+   app_commands
+   
+)
+from discord.ext import (
+   
+   tasks,
+   commands
+   
+)
 
 # >
 
 
-class cBot(Bot):
+class Bot(commands.Bot):
    
    def __init__(
       
       self,
       pRole,
       pToken,
+      pContact,
 
-      pChannel = 1062210162129129492,
+      pRoles = ['call', 'answer'],
+      pGuild = 974210528958369863,
+      pChannel = 1062210162129129492
       
    ):
       '''  '''
       
       self.role = pRole
+      self.roles = pRoles
+      self.guild = pGuild
       self.token = pToken
       self.screen = screen()
+      self.contact = pContact
       self.channel = pChannel
-      self.volume = lambda i : popen('osascript -e "set volume output volume {i}"')
       
-      Bot.__init__(
+      super().__init__(
          
-         self,
          command_prefix = '',
          intents = Intents.all()
          
@@ -44,12 +59,12 @@ class cBot(Bot):
       # add commands <
       # run algorithm <
       self.register()
-      await self.tree.sync()
+      await self.tree.sync(guild = Object(id = self.guild))
       
-      await self.listen.start()
+      self.listen.start()
       
       # >
-      
+         
    
    def mute(self):
       '''  '''
@@ -62,7 +77,7 @@ class cBot(Bot):
       ))
    
    
-   async def call(self):
+   def call(self):
       '''  '''
          
       self.screen.click(self.screen.find(
@@ -71,10 +86,9 @@ class cBot(Bot):
          image = 'asset/facetime/call.png'
          
       ))
-      self.mute()
                
    
-   async def answer(self):
+   def answer(self):
       '''  '''
       
       self.screen.click(self.screen.find(
@@ -83,24 +97,77 @@ class cBot(Bot):
          image = 'asset/facetime/answer.png'
          
       ))
+      
+   
+   def verify(self):
+      '''  '''
+      
+      return self.screen.find(
+         
+         confidence = 0.98,
+         image = f'asset/contact/{self.contact}.png'
+         
+      )
    
    
    @tasks.loop(seconds = 30)
    async def listen(self):
       '''  '''
       
-      await {
+      # if (on contact) <
+      if (self.verify()):
+      
+         {
+            
+            'call' : self.call,
+            'answer' : self.answer
+            
+         }[self.role]()
          
-         'call' : self.call,
-         'answer' : self.answer
-         
-      }[self.role]()
+      # >
                                              
    
    def register(self):
       '''  '''
       
       try:
+         
+         @self.hybrid_command(
+            
+            name = 'volume',
+            description = 'Adjust computer volume.'
+            
+         )
+         @app_commands.guilds(Object(id = self.guild))
+         @app_commands.describe(num = 'Number')
+         @app_commands.describe(role = 'Role')
+         @app_commands.choices(role = [
+            
+            app_commands.Choice(
+               
+               name = i,
+               value = i
+               
+            )
+            
+         for i in self.roles])
+         async def volume(
+            
+            ctx,
+            num: int,
+            role: app_commands.Choice[str]
+            
+         ):
+            '''  '''
+            
+            # if (is role) <
+            if (self.role == role.value):
+            
+               popen(f'osascript -e "set volume output volume {num}"')
+               await ctx.reply(f'`Role:` `{role.value}`\n`Volume:` `{num}`')            
+            
+            # >
+
       
          @self.hybrid_command(
          
@@ -108,6 +175,7 @@ class cBot(Bot):
             description = 'Transition to a different camera.'
          
          )
+         @app_commands.guilds(Object(id = self.guild))
          async def switch(ctx):
             '''  '''
             
@@ -130,18 +198,20 @@ class cBot(Bot):
             self.screen.click(xy = [500, 1000])
             
             # >
-         
-         
-         @self.hybrid_command(
             
-            name = 'off',
-            description = 'Turns off RCoD Bot'
+
          
-         )
-         async def off(ctx):
-            ''' '''
+         
+         # @self.hybrid_command(
             
-            popen('pmset displaysleepnow')
-            exit()
+         #    name = 'off',
+         #    description = 'Turns off RCoD Bot'
+         
+         # )
+         # async def off(ctx):
+         #    ''' '''
+            
+         #    popen('pmset displaysleepnow')
+         #    exit()
          
       except CommandRegistrationError: pass

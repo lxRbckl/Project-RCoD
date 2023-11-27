@@ -2,13 +2,14 @@
 
 
 # import <
-from bot import cBot
+from bot import Bot
 
 # >
 
 
 # variables <
 gRole = 'call'
+gContact = 'NoahsBroWitch'
 gToken = ''
 
 # >
@@ -17,10 +18,11 @@ gToken = ''
 # main <
 if (__name__ == '__main__'):
 
-   bot = cBot(
+   bot = Bot(
       
       pRole = gRole,
-      pToken = gToken
+      pToken = gToken,
+      pContact = gContact
       
    )
 
