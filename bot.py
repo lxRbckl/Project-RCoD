@@ -27,7 +27,6 @@ class Bot(commands.Bot):
       
       self,
       pRole,
-      pToken,
       pContact,
 
       pRoles = ['call', 'answer'],
@@ -37,10 +36,11 @@ class Bot(commands.Bot):
    ):
       '''  '''
       
+      # set <
+      # run <
       self.role = pRole
       self.roles = pRoles
       self.guild = pGuild
-      self.token = pToken
       self.screen = screen()
       self.contact = pContact
       self.channel = pChannel
@@ -51,6 +51,8 @@ class Bot(commands.Bot):
          intents = Intents.all()
          
       )
+      
+      # >
       
       
    async def on_ready(self):
@@ -198,20 +200,19 @@ class Bot(commands.Bot):
             self.screen.click(xy = [500, 1000])
             
             # >
-            
-
          
          
-         # @self.hybrid_command(
+         @self.hybrid_command(
             
-         #    name = 'off',
-         #    description = 'Turns off RCoD Bot'
+            name = 'off',
+            description = 'Turns off RCoD Bot'
          
-         # )
-         # async def off(ctx):
-         #    ''' '''
+         )
+         @app_commands.guilds(Object(id = self.guild))
+         async def off(ctx):
+            ''' '''
             
-         #    popen('pmset displaysleepnow')
-         #    exit()
+            popen('pmset displaysleepnow')
+            exit()
          
       except CommandRegistrationError: pass
