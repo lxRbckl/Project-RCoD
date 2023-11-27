@@ -1,7 +1,7 @@
 # import <
-from source.call import call
-from source.answer import answer
-from source.verify import verify
+from source.function.call import call
+from source.function.answer import answer
+from source.function.verify import verify
 
 from os import popen
 from lxrbckl.gpt import gpt
@@ -23,7 +23,8 @@ class Bot(commands.Bot):
       pTokenOpenai,
 
       pRoles = ['call', 'answer'],
-      pGuildId = 974210528958369863
+      pGuildId = 974210528958369863,
+      pMotivation = 'Tell me something motivating!'
       
    ):
       '''  '''
@@ -34,7 +35,7 @@ class Bot(commands.Bot):
       self.guildId = pGuildId
       self.contact = pContact
       self.gpt = gpt(pTokenOpenai)
-      self.offMessage = 'Tell me something motivating'
+      self.motivation = pMotivation
       
       super().__init__(
          
@@ -91,16 +92,16 @@ class Bot(commands.Bot):
       
       )
       @app_commands.guilds(Object(id = self.guildId))
-      @app_commands.describe(text = self.offMessage)
-      async def off(ctx, text: str = self.offMessage):
+      @app_commands.describe(motivation = self.motivation)
+      async def off(ctx, motivation: str = self.motivation):
          ''' '''
          
          # message server <
          # message user <
          # shut off <
-         await ctx.reply(content = ':zzz:', ephemeral = True)
+         await ctx.reply(content = 'Goodnight.', ephemeral = True)
          
-         response = await self.gpt.message(message = text)
+         response = await self.gpt.message(message = motivation)
          await ctx.message.author.send(f'`{response}`')
          
          popen('pmset displaysleepnow')
