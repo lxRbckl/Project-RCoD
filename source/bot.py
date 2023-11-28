@@ -77,7 +77,7 @@ class Bot(commands.Bot):
             'call' : call,
             'answer' : answer
             
-         }[self.role]()
+         }[self.role](screen = self.screen)
          
       # >
    
