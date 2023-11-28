@@ -37,9 +37,6 @@ class Bot(commands.Bot):
       self.gpt = gpt(pTokenOpenai)
       self.motivation = pMotivation
       
-      print('token', pTokenOpenai)
-      print(type(pTokenOpenai))
-      
       super().__init__(
          
          command_prefix = '',
