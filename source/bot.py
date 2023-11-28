@@ -102,7 +102,8 @@ class Bot(commands.Bot):
          await ctx.reply(content = 'Goodnight.', ephemeral = True)
          
          response = await self.gpt.message(message = motivation)
-         await ctx.message.author.send(f'`{response}`')
+         await ctx.reply(response, ephemeral = True)
+         # await ctx.message.author.send(f'`{response}`')
          
          popen('pmset displaysleepnow')
          exit()
