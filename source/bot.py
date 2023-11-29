@@ -96,8 +96,10 @@ class Bot(commands.Bot):
       async def off(ctx, query: str = self.motivation):
          ''' '''
          
-         # message user <
+         # send morning message <
+         # send motivation <
          # shut off <
+         await ctx.reply('Good Morning!', ephemeral = True)
          response = await self.gpt.message(message = query)
          await ctx.reply(response, ephemeral = True)
          
