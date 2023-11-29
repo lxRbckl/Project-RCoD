@@ -92,7 +92,7 @@ class Bot(commands.Bot):
       
       )
       @app_commands.guilds(Object(id = self.guildId))
-      @app_commands.describe(query = self.motivation)
+      @app_commands.describe(query = 'Query')
       async def off(ctx, query: str = self.motivation):
          ''' '''
          
@@ -161,7 +161,7 @@ class Bot(commands.Bot):
          )
          
       for i in self.roles])
-      @app_commands.describe(level = 'Number')
+      @app_commands.describe(level = 'Level')
       @app_commands.guilds(Object(id = self.guildId))
       async def volume(
          
