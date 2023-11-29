@@ -92,18 +92,14 @@ class Bot(commands.Bot):
       
       )
       @app_commands.guilds(Object(id = self.guildId))
-      @app_commands.describe(motivation = self.motivation)
-      async def off(ctx, motivation: str = self.motivation):
+      @app_commands.describe(Query = self.motivation)
+      async def off(ctx, Query: str = self.motivation):
          ''' '''
          
-         # message server <
          # message user <
          # shut off <
-         await ctx.reply(content = 'Goodnight.', ephemeral = True)
-         
-         response = await self.gpt.message(message = motivation)
+         response = await self.gpt.message(message = Query)
          await ctx.reply(response, ephemeral = True)
-         # await ctx.message.author.send(f'`{response}`')
          
          popen('pmset displaysleepnow')
          exit()
