@@ -1,4 +1,5 @@
 # import <
+from source.function.mute import mute
 from source.function.call import call
 from source.function.answer import answer
 from source.function.verify import verify
@@ -22,6 +23,7 @@ class Bot(commands.Bot):
       pContact,
       pTokenOpenai,
 
+      pIsMuted = True,
       pRoles = ['call', 'answer'],
       pGuildId = 974210528958369863,
       pMotivation = 'Tell me something motivating!'
@@ -33,6 +35,7 @@ class Bot(commands.Bot):
       self.roles = pRoles
       self.guildId = pGuildId
       self.contact = pContact
+      self.isMuted = pIsMuted
       self.motivation = pMotivation
       
       self.screen = screen()
@@ -71,6 +74,7 @@ class Bot(commands.Bot):
       '''  '''
             
       # if (on contact) <
+      # if (is muted) <
       if (verify(screen = self.screen, contact = self.contact)):
       
          {
@@ -79,6 +83,8 @@ class Bot(commands.Bot):
             'answer' : answer
             
          }[self.role](screen = self.screen)
+         
+      if (self.isMuted): mute(screen = self.screen)
          
       # >
    
