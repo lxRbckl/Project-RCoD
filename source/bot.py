@@ -31,11 +31,12 @@ class Bot(commands.Bot):
       
       self.role = pRole
       self.roles = pRoles
-      self.screen = screen()
       self.guildId = pGuildId
       self.contact = pContact
-      self.gpt = gpt(pTokenOpenai)
       self.motivation = pMotivation
+      
+      self.screen = screen()
+      self.gpt = gpt(pTokenOpenai)
       
       super().__init__(
          
@@ -68,7 +69,7 @@ class Bot(commands.Bot):
    @tasks.loop(seconds = 55)
    async def algorithm(self):
       '''  '''
-      
+            
       # if (on contact) <
       if (verify(screen = self.screen, contact = self.contact)):
       
