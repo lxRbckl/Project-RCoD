@@ -1,10 +1,12 @@
 # import <
-from source.function.mute import mute
-from source.function.call import call
-from source.function.answer import answer
-from source.function.verify import verify
+from source.function.off import fOff
+from source.function.mute import fMute
+from source.function.call import fCall
+from source.function.switch import fSwitch
+from source.function.answer import fAnswer
+from source.function.verify import fVerify
+from source.function.volume import fVolume
 
-from os import popen
 from lxrbckl.gpt import gpt
 from lxrbckl.screen import screen
 from discord.ext import (tasks, commands)
@@ -19,26 +21,30 @@ class Bot(commands.Bot):
    def __init__(
       
       self,
-      pRole,
-      pContact,
+
       pTokenOpenai,
 
-      pIsMuted = True,
+      pRole,
+      pContact,
+      isMuted = True,
       pRoles = ['call', 'answer'],
+      
       pGuildId = 974210528958369863,
-      pMotivation = 'Tell me something motivating!'
+      
+      pQuery = 'Give me a motivational quote to start my day!'
       
    ):
       '''  '''
       
       self.role = pRole
       self.roles = pRoles
-      self.guildId = pGuildId
+      self.query = pQuery
+      self.isMuted = isMuted
       self.contact = pContact
-      self.isMuted = pIsMuted
-      self.motivation = pMotivation
+      
       
       self.screen = screen()
+      self.guildId = pGuildId
       self.gpt = gpt(pTokenOpenai)
       
       super().__init__(
@@ -78,16 +84,16 @@ class Bot(commands.Bot):
             
       # if (on contact) <
       # if (is muted) <
-      if (verify(screen = self.screen, contact = self.contact)):
+      if (fVerify(pScreen = self.screen, pContact = self.contact)):
       
          {
             
-            'call' : call,
-            'answer' : answer
+            'call' : fCall,
+            'answer' : fAnswer
             
-         }[self.role](screen = self.screen)
+         }[self.role](pScreen = self.screen)
          
-      if (self.isMuted): mute(screen = self.screen)
+      if (self.isMuted): fMute(pScreen = self.screen)
          
       # >
    
@@ -102,21 +108,17 @@ class Bot(commands.Bot):
       
       )
       @app_commands.guilds(Object(id = self.guildId))
-      @app_commands.describe(query = 'Query')
-      async def off(ctx, query: str = self.motivation):
+      @app_commands.describe(query = self.query)
+      async def off(ctx, query: str = self.query):
          ''' '''
-         
-         # send morning message <
-         # send motivation <
-         # shut off <
-         await ctx.reply('Good Morning!', ephemeral = True)
-         response = await self.gpt.message(message = query)
-         await ctx.reply(response, ephemeral = True)
-         
-         popen('pmset displaysleepnow')
-         exit()
-         
-         # >
+
+         fOff(
+            
+            ctx = ctx,
+            pQuery = query,
+            oGPT = self.gpt
+            
+         )
 
 
    def registerSwitch(self):
@@ -129,28 +131,7 @@ class Bot(commands.Bot):
       
       )
       @app_commands.guilds(Object(id = self.guildId))
-      async def switch(ctx):
-         '''  '''
-         
-         # open <
-         # click more <
-         # click available <
-         self.screen.move(xy = [500, 500])
-         self.screen.click(self.screen.find(
-            
-            confidence = 0.95,
-            image = 'asset/camera/more.png'
-            
-         ))
-         self.screen.click(self.screen.find(
-            
-            confidence = 0.95,
-            image = 'asset/camera/available.png'
-            
-         ))
-         self.screen.click(xy = [500, 1000])
-         
-         # >
+      async def switch(ctx): fSwitch(self.screen)
    
    
    def registerVolume(self):
@@ -184,10 +165,11 @@ class Bot(commands.Bot):
       ):
          '''  '''
          
-         # if (is role) <
-         if (self.role == role.value):
-         
-            popen(f'osascript -e "set volume output volume {level}"')
-            await ctx.reply(f'`Role:` `{role.value}`\n`Volume:` `{level}`')            
-         
-         # >
+         await fVolume(
+            
+            ctx = ctx,
+            pLevel = level,
+            pRole = self.role,
+            pRoleValue = role.value
+            
+         )

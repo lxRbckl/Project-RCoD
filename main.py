@@ -10,6 +10,7 @@ from source.bot import Bot
 # variables <
 gRole = 'call'
 gContact = 'NoahsBroWitch'
+
 gTokenOpenai = ''
 gTokenDiscord = ''
 

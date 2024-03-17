@@ -1,14 +1,14 @@
-def verify(
+def fVerify(
    
-   screen,
-   contact
+   pScreen,
+   pContact
    
 ):
    '''  '''
    
-   return screen.find(
+   return pScreen.find(
       
       confidence = 0.98,
-      image = f'asset/contact/{contact}.png'
+      image = f'asset/contact/{pContact}.png'
       
    )

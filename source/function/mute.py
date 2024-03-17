@@ -1,7 +1,7 @@
-def mute(screen):
+def fMute(pScreen):
    '''  '''
    
-   screen.click(screen.find(
+   pScreen.click(pScreen.find(
       
       confidence = 0.95,
       image = 'asset/mic/unmuted.png'
