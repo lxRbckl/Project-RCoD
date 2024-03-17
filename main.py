@@ -25,8 +25,6 @@ if (__name__ == '__main__'):
       pContact = gContact,
       pTokenOpenai = gTokenOpenai
       
-   )
-   
-   bot.run(gTokenDiscord)
+   ).run(gTokenDiscord)
       
 # >

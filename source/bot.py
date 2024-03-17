@@ -31,9 +31,6 @@ class Bot(commands.Bot):
    ):
       '''  '''
       
-      self.attempt = 0
-      self.threshold = 3
-      
       self.role = pRole
       self.roles = pRoles
       self.guildId = pGuildId
@@ -60,6 +57,9 @@ class Bot(commands.Bot):
       # finally (run algorithm) <
       try:
          
+         self.tree.clear_commands(guild = Object(self.guildId))
+         await self.tree.sync(guild = Object(id = self.guildId))
+         
          self.registerOff()
          self.registerSwitch()
          self.registerVolume()
@@ -80,15 +80,12 @@ class Bot(commands.Bot):
       # if (is muted) <
       if (verify(screen = self.screen, contact = self.contact)):
       
-         if (self.attempt <= self.threshold):
-      
-            self.attempt += 1
-            {
-               
-               'call' : call,
-               'answer' : answer
-               
-            }[self.role](screen = self.screen)
+         {
+            
+            'call' : call,
+            'answer' : answer
+            
+         }[self.role](screen = self.screen)
          
       if (self.isMuted): mute(screen = self.screen)
          
