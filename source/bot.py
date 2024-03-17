@@ -21,18 +21,16 @@ class Bot(commands.Bot):
    def __init__(
       
       self,
-
-      pTokenOpenai,
-
+      
       pRole,
+      pQuery,
+      pGuildId,
       pContact,
+      pTokenOpenai,
+      
       isMuted = True,
-      pRoles = ['call', 'answer'],
-      
-      pGuildId = 974210528958369863,
-      
-      pQuery = 'Give me a motivational quote to start my day!'
-      
+      pRoles = ['call', 'answer']
+            
    ):
       '''  '''
       
@@ -41,7 +39,6 @@ class Bot(commands.Bot):
       self.query = pQuery
       self.isMuted = isMuted
       self.contact = pContact
-      
       
       self.screen = screen()
       self.guildId = pGuildId

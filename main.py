@@ -8,8 +8,8 @@ from source.bot import Bot
 
 
 # variables <
-gRole = 'call'
-gContact = 'NoahsBroWitch'
+gRole = ''
+gContact = ''
 
 gTokenOpenai = ''
 gTokenDiscord = ''
