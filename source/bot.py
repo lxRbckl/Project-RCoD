@@ -105,7 +105,7 @@ class Bot(commands.Bot):
       
       )
       @app_commands.guilds(Object(id = self.guildId))
-      @app_commands.describe(query = self.query)
+      @app_commands.describe(query = 'custom query')
       async def off(ctx, query: str = self.query):
          ''' '''
 
