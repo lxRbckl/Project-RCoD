@@ -109,7 +109,7 @@ class Bot(commands.Bot):
       async def off(ctx, query: str = self.query):
          ''' '''
 
-         fOff(
+         await fOff(
             
             ctx = ctx,
             pQuery = query,
