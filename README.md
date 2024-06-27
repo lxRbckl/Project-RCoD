@@ -7,5 +7,6 @@
 [`pyautogui`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/pyautogui.md)
 [`discord-py`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/discord-py.md)
 [`os`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/os.md)
+[`poetry`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/poetry.md)
 
 # 
