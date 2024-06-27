@@ -9,5 +9,6 @@
 [`os`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/os.md)
 [`poetry`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/poetry.md)
 [**`Shell`**](https://github.com/lxRbckl/lxRbckl/blob/main/Shell/README.md)
+[**`MacOS`**](https://github.com/lxRbckl/lxRbckl/blob/main/MacOS/README.md)
 
 # 
