@@ -4,10 +4,10 @@
 ---
 
 [**`Python`**](https://github.com/lxRbckl/lxRbckl/blob/main/Python/README.md)
-[`pyautogui`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/pyautogui.md)
-[`discord py`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/discord-py.md)
-[`os`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/os.md)
-[`poetry`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/poetry.md)
+[`pyautogui`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/pyautogui/README.md)
+[`discord py`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/discord-py/README.md)
+[`os`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/os/README.md)
+[`poetry`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/poetry/README.md)
 [**`Shell`**](https://github.com/lxRbckl/lxRbckl/blob/main/Shell/README.md)
 [**`MacOS`**](https://github.com/lxRbckl/lxRbckl/blob/main/MacOS/README.md)
 
