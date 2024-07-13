@@ -4,12 +4,12 @@
 ---
 
 [**`Python`**](https://github.com/lxRbckl/lxRbckl/blob/main/Python/README.md)
-[`os`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/os.md)
-[`asyncio`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/asyncio.md)
-[`discord py`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/discord-py.md)
-[`datetime`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/datetime.md)
-[`pyautogui`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/pyautogui.md)
-[`poetry`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/poetry.md)
+[`os`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/os/README.md)
+[`asyncio`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/asyncio/README.md)
+[`discord py`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/discord-py/README.md)
+[`datetime`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/datetime/README.md)
+[`pyautogui`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/pyautogui/README.md)
+[`poetry`](https://github.com/lxRbckl/lxRbckl/blob/main/Python/poetry/README.md)
 [**`MacOS`**](https://github.com/lxRbckl/lxRbckl/blob/main/MacOS/README.md)
 
 # 
