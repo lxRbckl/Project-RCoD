@@ -1,4 +1,4 @@
-# Project RCoD: Return Calls on Discord
+# [Project RCoD 1](https://github.com/lxRbckl/Project-RCoD/wiki/V1): Return Calls on Discord
 > Reconnect spontaneously disconnected Discord calls on Retina displays. V1. Spring 2023.
 
 ---
