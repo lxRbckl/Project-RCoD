@@ -8,7 +8,7 @@ def fVerify(
    
    return pScreen.find(
       
-      confidence = 0.95,
+      confidence = 0.99,
       image = f'asset/contact/{pContact}'
       
    )
