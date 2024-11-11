@@ -79,7 +79,7 @@ class Bot(commands.Bot):
    async def algorithm(self):
       '''  '''
             
-      # if (on contact) <
+      # if (contact exists) <
       # if (is muted) <
       if (fVerify(pScreen = self.screen, pContact = self.contact)):
       
