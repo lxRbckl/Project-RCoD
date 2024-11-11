@@ -20,12 +20,16 @@ gTokenDiscord = ''
 # main <
 if (__name__ == '__main__'):
 
-   bot = Bot(
+   try:
       
-      pRole = gRole,
-      pContact = gContact,
-      pTokenOpenai = gTokenOpenai
+      bot = Bot(
+         
+         pRole = gRole,
+         pContact = gContact,
+         pTokenOpenai = gTokenOpenai
+         
+      ).run(gTokenDiscord)
       
-   ).run(gTokenDiscord)
+   except RuntimeError: pass
       
 # >
