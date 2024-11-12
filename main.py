@@ -9,7 +9,7 @@ from source.bot import Bot
 
 
 # variables <
-version = '1.1.0'
+version = '2.1.16'
 
 # >
 
