@@ -29,6 +29,4 @@ async def fOff(
       await pCloser
       # exit(0)
    
-   except Exception as e:
-      
-      print(e)
+   except Exception as e: exit(0)
