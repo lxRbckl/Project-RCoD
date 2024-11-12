@@ -31,4 +31,4 @@ async def fOff(
    
    except Exception as e:
       
-      print('HERE HERE HERE')
+      print(e)
