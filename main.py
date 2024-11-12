@@ -18,8 +18,6 @@ version = '1.1.0'
 if (__name__ == '__main__'):
    
    print(f'Version: {version}')
-   print(f'token: {argv[7]}') # remove
-   print(f'role: {argv[1]}') # remove
    
    try:
       
@@ -35,6 +33,6 @@ if (__name__ == '__main__'):
          
       ).run(argv[7])
       
-   except RuntimeError: pass
+   except SystemExit: pass
 
 # >
