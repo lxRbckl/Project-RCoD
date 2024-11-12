@@ -33,6 +33,6 @@ if (__name__ == '__main__'):
          
       ).run(argv[7])
       
-   except SystemExit: pass
+   except: pass
 
 # >
