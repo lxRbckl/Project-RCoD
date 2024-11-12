@@ -26,7 +26,10 @@ async def fOff(
       # >
       
       popen('pmset displaysleepnow')
-      await pCloser
+      await pCloser()
+
       # exit(0)
    
-   except Exception as e: exit(0)
+   except Exception as e: 
+   
+      print(e)
