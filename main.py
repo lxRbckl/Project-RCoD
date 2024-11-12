@@ -2,7 +2,7 @@
 
 
 # import <
-import sys
+from sys import argv
 from source.bot import Bot
 
 # >
@@ -23,15 +23,15 @@ if (__name__ == '__main__'):
       
       bot = Bot(
          
-         pRole = sys.argv(1),
-         pQuery = sys.argv(2),
-         pGuildId = sys.argv(3),
-         pContact = sys.argv(4),
-         pSkipQuery = sys.argv(5),
-         pTokenOpenai = sys.argv(6),
-         pMuteAfterCall = sys.argv(7)
+         pRole = argv(1),
+         pQuery = argv(2),
+         pGuildId = argv(3),
+         pContact = argv(4),
+         pSkipQuery = argv(5),
+         pTokenOpenai = argv(6),
+         pMuteAfterCall = argv(7)
          
-      ).run(sys.argv(8))
+      ).run(argv(8))
       
    except RuntimeError: pass
       
