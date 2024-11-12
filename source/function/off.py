@@ -23,6 +23,6 @@ async def fOff(
       
    # >
    
-   pCloser()
+   await pCloser()
    popen('pmset displaysleepnow')
    exit(0)
