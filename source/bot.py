@@ -26,30 +26,25 @@ class Bot(commands.Bot):
       pQuery,
       pGuildId,
       pContact,
+      pSkipQuery,
       pTokenOpenai,
-      
-      isMuted = True,
-      pRoles = ['call', 'answer']
+      pMuteAfterCall
             
    ):
       '''  '''
       
       self.role = pRole
-      self.roles = pRoles
       self.query = pQuery
-      self.isMuted = isMuted
+      self.guildId = pGuildId
       self.contact = pContact
+      self.skipQuery = pSkipQuery
+      self.muteAfterCall = pMuteAfterCall
       
       self.screen = screen()
-      self.guildId = pGuildId
       self.gpt = gpt(pTokenOpenai)
+      self.roles = {'call' : fCall, 'answer' : fAnswer}
       
-      super().__init__(
-         
-         command_prefix = '',
-         intents = Intents.all()
-         
-      )
+      super().__init__(command_prefix = '', intents = Intents.all())
       
       
    async def on_ready(self):
@@ -78,20 +73,13 @@ class Bot(commands.Bot):
    @tasks.loop(seconds = 55)
    async def algorithm(self):
       '''  '''
-            
-      # if (contact exists) <
-      # if (is muted) <
-      if (fVerify(pScreen = self.screen, pContact = self.contact)):
       
-         {
-            
-            'call' : fCall,
-            'answer' : fAnswer
-            
-         }[self.role](pScreen = self.screen)
+      # if (contact exists) <
+      if (fVerify(pScreen = self.screen, pContact = self.contact)):
          
-      if (self.isMuted): fMute(pScreen = self.screen)
-         
+         self.roles[self.role](pScreen = self.screen)
+         fMute(pScreen = self.screen, pMuteAfterCall = self.muteAfterCall)
+      
       # >
    
    
@@ -113,7 +101,8 @@ class Bot(commands.Bot):
             
             ctx = ctx,
             pQuery = query,
-            oGPT = self.gpt
+            oGPT = self.gpt,
+            pSkipQuery = self.skipQuery
             
          )
 
@@ -145,12 +134,12 @@ class Bot(commands.Bot):
          
          app_commands.Choice(
             
-            name = i,
-            value = i
+            name = k,
+            value = k
             
          )
          
-      for i in self.roles])
+      for k in list((self.roles).keys())])
       @app_commands.describe(level = 'Level')
       @app_commands.guilds(Object(id = self.guildId))
       async def volume(

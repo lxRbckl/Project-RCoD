@@ -1,9 +1,19 @@
-def fMute(pScreen):
+def fMute(
+   
+   pScreen,
+   pMuteAfterCall
+   
+):
    '''  '''
    
-   pScreen.click(pScreen.find(
+   # if (mute call) <
+   if (pMuteAfterCall):
+   
+      pScreen.click(pScreen.find(
+         
+         confidence = 0.95,
+         image = 'asset/mic/unmuted.png'
+         
+      ))
       
-      confidence = 0.95,
-      image = 'asset/mic/unmuted.png'
-      
-   ))
+   # >
