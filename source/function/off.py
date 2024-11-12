@@ -14,13 +14,19 @@ async def fOff(
 ):
    '''  '''
    
-   # if (skip default query) <
-   if (pSkipQuery):
+   try:
       
-      response = await oGPT.message(message = pQuery)
-      await ctx.reply(response, ephemeral = True)
+      # if (skip default query) <
+      if (pSkipQuery):
+         
+         response = await oGPT.message(message = pQuery)
+         await ctx.reply(response, ephemeral = True)
+         
+      # >
       
-   # >
+      popen('pmset displaysleepnow')
+      exit(0)
    
-   popen('pmset displaysleepnow')
-   exit(0)
+   except Exception as e:
+      
+      print('HERE HERE HERE')
