@@ -9,6 +9,7 @@ async def fOff(
    ctx,
    oGPT,
    pQuery,
+   pCloser,
    pSkipQuery
    
 ):
@@ -25,7 +26,8 @@ async def fOff(
       # >
       
       popen('pmset displaysleepnow')
-      exit(0)
+      await pCloser
+      # exit(0)
    
    except Exception as e:
       
