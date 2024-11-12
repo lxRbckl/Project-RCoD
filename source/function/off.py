@@ -30,4 +30,4 @@ async def fOff(
 
       # exit(0)
    
-   except RuntimeError: pass
+   except Exception as e: pass
