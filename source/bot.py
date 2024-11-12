@@ -102,6 +102,7 @@ class Bot(commands.Bot):
             ctx = ctx,
             pQuery = query,
             oGPT = self.gpt,
+            pCloser = self.close,
             pSkipQuery = self.skipQuery
             
          )

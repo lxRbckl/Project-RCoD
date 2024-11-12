@@ -9,6 +9,7 @@ async def fOff(
    ctx,
    oGPT,
    pQuery,
+   pCloser,
    pSkipQuery
    
 ):
@@ -21,6 +22,7 @@ async def fOff(
       await ctx.reply(response, ephemeral = True)
       
    # >
-      
+   
+   pCloser()
    popen('pmset displaysleepnow')
    exit(0)

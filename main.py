@@ -17,7 +17,7 @@ version = '1.1.0'
 # main <
 if (__name__ == '__main__'):
    
-   print(f'Version: {version}')
+   print(f'\nProject RCoD - Version: {version}\n')
    
    try:
       
