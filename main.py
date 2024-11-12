@@ -23,15 +23,15 @@ if (__name__ == '__main__'):
       
       bot = Bot(
          
-         pRole = argv(1),
-         pQuery = argv(2),
-         pContact = argv(3),
-         pGuildId = argv(4),
-         pSkipQuery = argv(5),
-         pTokenOpenai = argv(6),
-         pMuteAfterCall = argv(8)
+         pRole = argv[1],
+         pQuery = argv[2],
+         pContact = argv[3],
+         pGuildId = argv[4],
+         pSkipQuery = argv[5],
+         pTokenOpenai = argv[6],
+         pMuteAfterCall = argv[8]
          
-      ).run(argv(7))
+      ).run(argv[7])
       
    except RuntimeError: pass
 
