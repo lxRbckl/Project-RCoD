@@ -22,19 +22,23 @@ version = "3.0.0"
 
 if (__name__ == "__main__"):
    
-   mic = mic()
-   roles = roles()
-   screen = screen()
-   runtime = runtime()
-   while (runtime.stop(screen) == False):
+   try:
       
-      facetimeAction = {
+      mic = mic()
+      roles = roles()
+      screen = screen()
+      runtime = runtime()
+      while (runtime.stop(screen) == False):
          
-         "call" : roles.call,
-         "answer" : roles.answer
+         facetimeAction = {
+            
+            "call" : roles.call,
+            "answer" : roles.answer
+            
+         }[role]
          
-      }[role]
-      
-      facetimeAction(screen)
-      mic.mute(screen)
-      sleep(60)
+         facetimeAction(screen)
+         mic.mute(screen)
+         sleep(60)
+         
+   except KeyboardInterrupt: exit(0)
