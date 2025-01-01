@@ -4,7 +4,7 @@
 # >
 
 
-class microphone:
+class mic:
    
    
    def __init__(self):
@@ -27,7 +27,7 @@ class microphone:
       return screen.find(
          
          confidence = 0.90,
-         image = "assets/microphone/unmuted.png"
+         image = "assets/mic/unmuted.png"
          
       )
    

@@ -7,8 +7,8 @@ from time import sleep
 from lxrbckl.screen import screen
 
 from src.classes.roles import roles
+from src.classes.microphone import mic
 from src.classes.runtime import runtime
-from src.classes.microphone import microphone
 
 # >
 
@@ -22,11 +22,11 @@ version = "3.0.0"
 
 if (__name__ == "__main__"):
    
+   mic = mic()
    roles = roles()
-   mic = microphone()
+   screen = screen()
    runtime = runtime()
-   currentScreen = screen()
-   while (runtime.stop(currentScreen) == False):
+   while (runtime.stop(screen) == False):
       
       facetimeAction = {
          
@@ -35,6 +35,6 @@ if (__name__ == "__main__"):
          
       }[role]
       
-      facetimeAction(currentScreen)
-      mic.mute(currentScreen)
+      facetimeAction(screen)
+      mic.mute(screen)
       sleep(60)
