@@ -19,7 +19,7 @@ class roles():
       screen.click(screen.find(
          
          confidence = 0.90,
-         image = "assets/facetime/call.png"
+         image = "assets/roles/call.png"
          
       ))
    
@@ -30,6 +30,6 @@ class roles():
       screen.click(screen.find(
          
          confidence = 0.95,
-         image = "assets/facetime/answer.png"
+         image = "assets/roles/answer.png"
          
       ))

@@ -13,19 +13,23 @@ class runtime():
       pass
    
    
-   def checkForStop(self, screen):
+   def _checkForStop(self, screen):
       '''  '''
       
       return screen.find(
          
          confidence = 0.9,
-         image = "assets/facetime/stop.png"
+         image = "assets/runtime/stop.png"
          
       )
       
       
-   def stop(self):
+   def stop(self, screen):
       '''  '''
       
-      popen('pmset displaysleepnow')
-      exit(0)
+      if (self._checkForStop(screen)):
+         
+         popen('pmset displaysleepnow')
+         return True
+            
+      else: return False

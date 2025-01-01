@@ -8,6 +8,7 @@ from lxrbckl.screen import screen
 
 from src.classes.roles import roles
 from src.classes.runtime import runtime
+from src.classes.microphone import microphone
 
 # >
 
@@ -22,24 +23,18 @@ version = "3.0.0"
 if (__name__ == "__main__"):
    
    roles = roles()
+   mic = microphone()
    runtime = runtime()
    currentScreen = screen()
-   while (True):
+   while (runtime.stop(currentScreen) == False):
       
-      # if (keep running) <
-      # else (then stop running) <
-      if (not runtime.checkForStop(currentScreen)):
+      facetimeAction = {
          
-         action = {
-            
-            "call" : roles.call,
-            "answer" : roles.answer
-            
-         }[role]
+         "call" : roles.call,
+         "answer" : roles.answer
          
-         action(currentScreen)
-         sleep(60)
-         
-      else: runtime.stop()
+      }[role]
       
-      # >
+      facetimeAction(currentScreen)
+      mic.mute(currentScreen)
+      sleep(60)
