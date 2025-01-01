@@ -1,5 +1,5 @@
 # [Project RCoD 3](https://github.com/lxRbckl/Project-RCoD/wiki/V3): Return Calls on Discord
-> Reconnect to dropped Discord calls on Retina displays. V2. Fall 2023.
+> Reconnect to dropped Discord calls on Retina displays. V2. Spring 2024.
 
 ---
 
