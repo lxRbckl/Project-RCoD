@@ -13,8 +13,7 @@ from src.classes.runtime import runtime
 
 
 # variables <
-role = argv[1]
-delay = int(argv[0])
+role = argv[0]
 version = "3.0.0"
 
 # >
@@ -39,7 +38,7 @@ if (__name__ == "__main__"):
          }[role]
          
          action(currentScreen)
-         sleep(delay)
+         sleep(60)
          
       else: runtime.stop()
       
