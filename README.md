@@ -1,5 +1,5 @@
 # [Project RCoD 1](https://github.com/lxRbckl/Project-RCoD/wiki/V1)
-> Reconnect spontaneously disconnected Discord calls on Retina displays. V1. Spring 2023.
+> *Return Calls on Discord.* Reconnect spontaneously disconnected Discord calls on Retina displays. V1. Spring 2023.
 
 ---
 
