@@ -13,7 +13,7 @@ from src.classes.runtime import runtime
 
 
 # variables <
-role = argv[0]
+role = argv[1]
 version = "3.0.0"
 
 # >
