@@ -13,8 +13,8 @@ from src.classes.runtime import runtime
 
 
 # variables <
-delay = 5 # argv[0]
-role = "call" # argv[1]
+role = argv[1]
+delay = int(argv[0])
 version = "3.0.0"
 
 # >
